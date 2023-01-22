@@ -12,18 +12,26 @@ const handler = serve(
   [fn],
 );
 
-const wrapper = async (args: any) => {
-  const response = await handler(args);
-
+const loader = async (args: any) => {
   try {
     const json = JSON.stringify(args);
     console.log(json);
   } catch(e) {
   }
-
-  console.log(args, response);
-
+  console.log("GET", args, args.method);
+  const response = await handler(args);
   return response;
 }
 
-export { wrapper as loader, wrapper as action };
+const action = async (args: any) => {
+  try {
+    const json = JSON.stringify(args);
+    console.log(json);
+  } catch(e) {
+  }
+  console.log("ACTION", args, args.method);
+  const response = await handler(args);
+  return response;
+}
+
+export { loader, action };
