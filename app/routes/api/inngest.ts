@@ -12,8 +12,8 @@ const handler = serve(
   [fn],
 );
 
-const wrapper = (args: any) => {
-  const response = handler(args);
+const wrapper = async (args: any) => {
+  const response = await handler(args);
 
   try {
     const json = JSON.stringify(args);
