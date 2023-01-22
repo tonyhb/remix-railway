@@ -12,4 +12,18 @@ const handler = serve(
   [fn],
 );
 
+const wrapper = (args) => {
+  const response = handler(args);
+
+  try {
+    const json = JSON.stringify(args);
+    console.log(json);
+  } catch(e) {
+  }
+
+  console.log(args, response);
+
+  return response;
+}
+
 export { handler as loader, handler as action };
