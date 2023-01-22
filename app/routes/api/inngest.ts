@@ -3,7 +3,7 @@ import { serve } from "inngest/remix";
 
 const client = new Inngest({ name: "Test remix app" });
 
-const fn = client.createFunction("Test function on remix", "auth/user.created", ({ event }) => {
+const fn = client.createFunction("Test function on remix", "demo/event.sent", ({ event }) => {
   return { data: "ok", event };
 });
 
