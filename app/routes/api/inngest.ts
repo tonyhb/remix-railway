@@ -4,7 +4,7 @@ import { serve } from "inngest/remix";
 const client = new Inngest({ name: "Test remix app" });
 
 const fn = client.createFunction("Test function on remix", "auth/user.created", ({ event }) => {
-  return "ok";
+  return { data: "ok", event };
 });
 
 const handler = serve(
@@ -12,7 +12,7 @@ const handler = serve(
   [fn],
 );
 
-const wrapper = (args) => {
+const wrapper = (args: any) => {
   const response = handler(args);
 
   try {
@@ -26,4 +26,4 @@ const wrapper = (args) => {
   return response;
 }
 
-export { handler as loader, handler as action };
+export { wrapper as loader, wrapper as action };
